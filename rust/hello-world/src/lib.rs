@@ -3,7 +3,3 @@
 pub fn hello() -> &'static str {
     "Hello, World!"
 }
-
-// cargo test -- --ignored
-// cargo test some_test
-// cargo test some_test -- --ignored
