@@ -1,1 +1,1 @@
-# exercism_rs
+# exercism
