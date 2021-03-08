@@ -19,3 +19,5 @@ cargo clippy --all-targets
 // cargo test -- --ignored
 // cargo test some_test
 // cargo test some_test -- --ignored
+
+`cargo test --manifest-path leap/Cargo.toml`
