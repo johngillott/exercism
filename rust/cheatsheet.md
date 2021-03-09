@@ -20,4 +20,6 @@ cargo clippy --all-targets
 // cargo test some_test
 // cargo test some_test -- --ignored
 
-`cargo test --manifest-path leap/Cargo.toml`
+`cargo test --manifest-path reverse-string/Cargo.toml -- --ignored`
+
+`cargo test --all-features --manifest-path reverse-string/Cargo.toml -- --ignored`
