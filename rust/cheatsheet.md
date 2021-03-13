@@ -1,5 +1,14 @@
 # cheatsheet
 
+## exercism set up
+
+`exercism configure -w ~/dev/exercism`
+
+## resources
+
+- [Docs](https://doc.rust-lang.org/std/index.html)
+      - command + k -> search shortcut: rustlang 'phrase' i.e. `rustlang loop`
+
 ## exercism
 
 <!-- submit -->
@@ -22,4 +31,4 @@ cargo clippy --all-targets
 
 `cargo test --manifest-path reverse-string/Cargo.toml -- --ignored`
 
-`cargo test --all-features --manifest-path reverse-string/Cargo.toml -- --ignored`
+`cargo test --all-features --manifest-path nth-prime/Cargo.toml -- --ignored`
