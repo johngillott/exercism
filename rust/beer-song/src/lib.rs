@@ -14,15 +14,13 @@ pub fn verse(n: u32) -> String {
 pub fn sing(start: u32, end: u32) -> String {
     let mut song = String::new();
 
-    let mut n: u32 = start;
-    let num_of_lines = start - end + 1;
+    let num_of_lines: u32 = start - end + 1;
 
-    for i in 0..num_of_lines {
-        song.push_str(&verse(n));
-        if i < num_of_lines - 1 {
+    for i in (0..num_of_lines).rev() {
+        song.push_str(&verse(i + end));
+        if i != 0 {
             song.push('\n');
         }
-        n -= 1;
     }
 
     song
