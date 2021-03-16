@@ -1,20 +1,14 @@
 pub fn build_proverb(list: &[&str]) -> String {
-    let mut proverb = String::new();
-    if list.len() == 0 {
-        return proverb;
+    if list.is_empty() {
+        return String::new();
     }
 
-    for i in 0..list.len() - 1 {
-        proverb.push_str(&format!(
-            "For want of a {} the {} was lost.",
-            list[i],
-            list[i + 1]
-        ));
-
-        proverb.push('\n');
-    }
-
-    proverb.push_str(&format!("And all for the want of a {}.", list[0]));
-
-    proverb
+    list.windows(2)
+        .map(|w| format!("For want of a {0} the {1} was lost.", w[0], w[1]))
+        .chain(std::iter::once(format!(
+            "And all for the want of a {}.",
+            list[0],
+        )))
+        .collect::<Vec<_>>()
+        .join("\n")
 }
