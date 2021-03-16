@@ -32,3 +32,5 @@ cargo clippy --all-targets
 `cargo test --manifest-path reverse-string/Cargo.toml -- --ignored`
 
 `cargo test --all-features --manifest-path nth-prime/Cargo.toml -- --ignored`
+
+`cargo clippy --all-targets --manifest-path=rust/proverb/Cargo.toml`
