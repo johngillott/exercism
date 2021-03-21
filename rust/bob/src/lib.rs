@@ -1,43 +1,14 @@
-const SURE: &str = "Sure.";
-const WHATEVER: &str = "Whatever.";
-const CHILL_OUT: &str = "Whoa, chill out!";
-const FINE: &str = "Fine. Be that way!";
-const CALM_DOWN: &str = "Calm down, I know what I'm doing!";
+fn is_yelling(message: &str) -> bool {
+    let have_letters: bool = message.chars().filter(|x| x.is_alphabetic()).count() > 0;
+    message.to_uppercase() == message && have_letters
+}
 
 pub fn reply(message: &str) -> &str {
-    if message
-        .chars()
-        .filter(|x| x.is_whitespace())
-        .fold(0, |acc, _| acc + 1)
-        == message.len()
-    {
-        return FINE;
+    match message.trim() {
+        m if m.len() == 0 => "Fine. Be that way!",
+        m if m.ends_with("?") && is_yelling(m) => "Calm down, I know what I'm doing!",
+        m if m.ends_with("?") => "Sure.",
+        m if is_yelling(m) => "Whoa, chill out!",
+        _ => "Whatever.",
     }
-
-    let question = message.chars().filter(|x| !x.is_whitespace()).last() == Some('?');
-
-    let shout = message
-        .chars()
-        .filter(|x| x.is_alphabetic())
-        .fold(0, |acc, _| acc + 1)
-        > 0
-        && message
-            .chars()
-            .filter(|x| x.is_lowercase())
-            .fold(0, |acc, _| acc + 1)
-            == 0;
-
-    if shout && question {
-        return CALM_DOWN;
-    }
-
-    if question {
-        return SURE;
-    }
-
-    if shout {
-        return CHILL_OUT;
-    }
-
-    WHATEVER
 }
