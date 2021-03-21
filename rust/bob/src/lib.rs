@@ -39,9 +39,5 @@ pub fn reply(message: &str) -> &str {
         return CHILL_OUT;
     }
 
-    match message {
-        // m
-        // ,
-        _ => WHATEVER,
-    }
+    WHATEVER
 }
