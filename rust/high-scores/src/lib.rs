@@ -1,12 +1,10 @@
 #[derive(Debug)]
-pub struct HighScores<'scores> {
-    scores: &'scores [u32],
+pub struct HighScores<'a> {
+    scores: &'a [u32],
 }
 
-// shared lifetime/lifetime chapter
-
-impl<'scores> HighScores<'scores> {
-    pub fn new(scores: &'scores [u32]) -> Self {
+impl<'a> HighScores<'a> {
+    pub fn new(scores: &'a [u32]) -> Self {
         HighScores { scores }
     }
 
