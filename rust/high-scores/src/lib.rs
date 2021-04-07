@@ -15,33 +15,17 @@ impl<'scores> HighScores<'scores> {
     }
 
     pub fn latest(&self) -> Option<u32> {
-        match self.scores.last() {
-            Some(&v) => Some(v),
-            _ => None,
-        }
+        self.scores.last().cloned()
     }
 
     pub fn personal_best(&self) -> Option<u32> {
-        if self.scores.is_empty() {
-            return None;
-        }
-
-        let mut personal_best = self.scores[0];
-
-        for &item in self.scores.iter() {
-            if item > personal_best {
-                personal_best = item;
-            }
-        }
-
-        Some(personal_best)
+        self.scores.iter().max().cloned()
     }
 
     pub fn personal_top_three(&self) -> Vec<u32> {
-        let mut personal_top_tree = Vec::from(self.scores);
-        personal_top_tree.sort_unstable();
-        personal_top_tree.reverse();
-        personal_top_tree.truncate(3);
-        personal_top_tree
+        let mut vec = self.scores.to_vec();
+        vec.sort_unstable_by(|a, b| b.cmp(a));
+        vec.truncate(3);
+        vec
     }
 }
