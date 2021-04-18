@@ -25,8 +25,8 @@ impl fmt::Display for Clock {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.write_fmt(format_args!(
             "{:02}:{:02}",
-            (self.wall / 60) % 24,    // HH
-            minutes = self.wall % 60, // MM
+            self.wall.div_euclid(60).rem_euclid(24), // HH
+            self.wall.rem_euclid(60)                 // MM
         ))
     }
 }
