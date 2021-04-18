@@ -3,13 +3,14 @@ use std::fmt;
 #[derive(Debug, PartialEq)]
 pub struct Clock {
     wall: i32,
+    _a: (), // non-public field to prevent struct literal initialization of Clock.
 }
 
 const MINUTES_IN_DAY: i32 = 60 * 24;
 
 impl Clock {
     pub fn new(hours: i32, minutes: i32) -> Self {
-        Clock { wall: 0 }.add_minutes(hours * 60 + minutes)
+        Clock { wall: 0, _a: () }.add_minutes(hours * 60 + minutes)
     }
 
     pub fn add_minutes(&self, minutes: i32) -> Self {
@@ -17,6 +18,7 @@ impl Clock {
 
         Clock {
             wall: if t > 0 { t } else { MINUTES_IN_DAY + t },
+            _a: (),
         }
     }
 }
